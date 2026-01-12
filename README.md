@@ -1,5 +1,7 @@
-# Frequency-based-violence-detectiom
-This Python script implements a simple motion-based violence detection system using OpenCV for video processing from a webcam (or CCTV feed), counting "violent" frames based on pixel change frequency over one-minute intervals, and sending email alerts via Gmail SMTP when a threshold is exceeded.
+# Frequency-based-violence-detection 
+Frequency-based violence detection analyzes audio signals by extracting frequency-domain features like Mel-Frequency Cepstral Coefficients (MFCCs), spectral contrast, and Mel-spectrograms to identify patterns associated with violent sounds, such as screams or impacts. These features capture tonal and pitch variations that distinguish violence from normal audio, often processed in short windows (e.g., 10-second clips) for real-time monitoring. Upon detection, the system triggers an alert email to a specified recipient, including details like timestamp and a snapshot.
+
+The Python script implements a simple motion-based violence detection system using OpenCV for video processing from a webcam (or CCTV feed), counting "violent" frames based on pixel change frequency over one-minute intervals, and sending email alerts via Gmail SMTP when a threshold is exceeded.
 
 # Code Structure
 The script sets a threshold_frequency of 6000 violent frames per minute—frames with over 50,000 differing pixels from the previous frame qualify as "violent" due to rapid motion indicative of potential violence. It captures video via cv2.VideoCapture(0) for the default webcam, converts frames to grayscale for efficient comparison, and uses cv2.absdiff() to compute absolute differences between consecutive frames. Non-zero pixel counts (np.count_nonzero(diff)) quantify motion; high counts trigger the counter increment.
